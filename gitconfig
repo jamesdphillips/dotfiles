@@ -1,24 +1,40 @@
+[user]
+  name = James Phillips
+  email = jamesdphillips@gmail.com
+[github]
+  user = jamesdphillips
 [init]
   templatedir = ~/.git_template
 [push]
   default = current
 [color]
   ui = auto
+[branch]
+  autosetuprebase = always
 [alias]
   aa = add --all
   ap = add --patch
+  br = branch
   ca = commit --amend
   ci = commit -v
   co = checkout
   co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
+  cp = cherry-pick
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
+  di = diff
   merge-branch = !git checkout master && git merge @{-1}
+  mg = merge
   pr = !gh pull-request
   st = status
   up = !git fetch origin && git rebase origin/master
+  pl = pull
+  ps = push
+[push]
+  default = tracking
 [core]
+  editor=vim
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
@@ -29,3 +45,9 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
