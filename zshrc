@@ -1,47 +1,76 @@
-# modify the prompt to contain git branch name if applicable
-git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if [[ -n $ref ]]; then
-    echo " %{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}"
-  fi
-}
-setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="theunraveler"
 
-# load our own completion functions
+DISABLE_UPDATE_PROMPT=true
+COMPLETION_WAITING_DOTS=true
+UPDATE_ZSH_DAYS=2
+
+plugins=(
+  battery
+  brew
+  bundler
+  forklift
+  gem
+  git
+  github
+  heroku
+  env
+  lein
+  node
+  npm
+  nvm
+  osx
+  pip
+  postgres
+  python
+  rails
+  redis-cli
+  ruby
+  rvm
+  sublime
+  tmux
+  wd
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Load our own completion functions
 fpath=(~/.zsh/completion $fpath)
 
-# completion
+# Completion
 autoload -U compinit
 compinit
 
-# load custom executable functions
+# Load custom executable functions
 for function in ~/.zsh/functions/*; do
   source $function
 done
 
-# makes color constants available
-autoload -U colors
-colors
-
-# enable colored output from ls, etc
-export CLICOLOR=1
-
-# history settings
+# History settings
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zhistory
 HISTSIZE=4096
 SAVEHIST=4096
 
-# awesome cd movements from zshkit
-setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
-DIRSTACKSIZE=5
+# Ensure dotfiles bin directory is loaded first
+export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 
-# Enable extended globbing
-setopt extendedglob
+# Load RVM if available
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# Allow [ or ] whereever you want
-unsetopt nomatch
+# Aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
+
+# EDITOR
+export VISUAL=vim
+export EDITOR=$VISUAL
+
+# Dev tools
+# export PATH="$PATH:/Developer/usr/bin"
+
+# Chef
+export ENCRYPTED_DATA_BAG_SECRET_KEY_PATH="$HOME/encrypted_data_bag_secret"
 
 # vi mode
 bindkey -v
@@ -98,3 +127,4 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
