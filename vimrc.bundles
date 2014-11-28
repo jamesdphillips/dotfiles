@@ -29,6 +29,10 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/tComment'
+Plugin 'jtratner/vim-flavored-markdown'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+Bundle 'tpope/vim-fireplace'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
