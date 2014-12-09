@@ -32,7 +32,12 @@ Plugin 'vim-scripts/tComment'
 Plugin 'jtratner/vim-flavored-markdown'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'tpope/vim-leiningen'
+Bundle 'tpope/vim-projectionist'
+Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fireplace'
+Bundle 'guns/vim-clojure-static'
+Bundle 'guns/vim-clojure-highlight'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
