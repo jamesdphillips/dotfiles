@@ -128,5 +128,14 @@ _load_settings "$HOME/.zsh/configs"
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
+#
+# Ruby
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+#
+# Go
+
+export GOROOT="/usr/local/opt/go/libexec" # go binaries
+export GOPATH="$HOME/go"                  # go libs
+export PATH="$HOME/go/bin:$PATH"          # go binaries
