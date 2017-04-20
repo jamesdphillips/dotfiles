@@ -34,7 +34,7 @@
 [push]
   default = tracking
 [core]
-  editor=vim
+  editor=nvim
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
@@ -51,3 +51,7 @@
 [mergetool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
+[credential]
+  helper = store
+[url "https://github.com"]
+  insteadOf = git://github.com
