@@ -18,7 +18,6 @@ plugins=(
   lein
   node
   npm
-  nvm
   osx
   pip
   postgres
@@ -27,10 +26,13 @@ plugins=(
   redis-cli
   ruby
   rvm
-  sublime
   tmux
   wd
   zsh-syntax-highlighting
+  zsh-autosuggestions
+  rust
+  cargo
+  yarn
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -63,7 +65,7 @@ export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 # EDITOR
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=$VISUAL
 
 # Dev tools
@@ -139,3 +141,53 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export GOROOT="/usr/local/opt/go/libexec" # go binaries
 export GOPATH="$HOME/go"                  # go libs
 export PATH="$HOME/go/bin:$PATH"          # go binaries
+# export GO111MODULE=on
+
+#
+# GPG
+
+export GPG_TTY=$(tty)
+
+#
+# Google Cloud
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jamesdphillips/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/jamesdphillips/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jamesdphillips/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/jamesdphillips/google-cloud-sdk/completion.zsh.inc'; fi
+
+#
+# Kubernetes
+
+source <(kubectl completion zsh)
+
+#
+# Sensu CLI
+
+export PATH=/Users/jamesdphillips/go/src/github.com/sensu/sensu-go/bin:$PATH
+source <(sensuctl completion zsh)
+
+# added by travis gem
+[ -f /Users/jamesdphillips/.travis/travis.sh ] && source /Users/jamesdphillips/.travis/travis.sh
+
+#
+# Cargo & Rust
+
+export PATH=$PATH:$HOME/.cargo/bin
+
+#
+# Yarn
+
+export PATH=$PATH:$HOME/.yarn/bin
+
+#
+# node_modules
+
+export NODE_OPTIONS=--max_old_space_size=4096
+export PATH="$PATH:./node_modules/.bin"
+
+#
+# Z
+
+. `brew --prefix`/etc/profile.d/z.sh
