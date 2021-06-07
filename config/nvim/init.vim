@@ -5,7 +5,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'tag': '3.0' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } ", { 'tag': '3.0' }
 
 " ALE
 Plug 'w0rp/ale'
@@ -42,6 +42,11 @@ Plug 'editorconfig/editorconfig-vim'
 
 " GraphQL
 Plug 'jparise/vim-graphql'
+
+" TypeScript
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/denite.nvim'
 
 " Python
 let g:python_host_prog = '/usr/local/bin/python2'
@@ -202,9 +207,11 @@ let g:deoplete#enable_at_startup = 1
 " Go Syntax
 
 let g:go_list_type = "quickfix"
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " let g:go_metalinter_command='staticcheck'
 " Linter
-let g:ale_linters['go'] = ['golangci-lint']
+let g:ale_linters['go'] = ['gopls']
 " Highlighting
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -218,7 +225,7 @@ let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
 " Import packages and fmt
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
 " autocmd! BufWritePost * Neomake
 
 "
@@ -232,6 +239,11 @@ let g:go_fmt_command = "goimports"
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_javascript_prettier_options = '--trailing-comma all'
 let g:ale_fix_on_save = 1
+
+"
+" Typescript
+
+let g:ale_fixers['typescript'] = ['prettier']
 
 "
 " Airline

@@ -139,7 +139,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # Go
 
 export GOROOT="/usr/local/opt/go/libexec" # go binaries
-export GOPATH="$HOME/go"                  # go libs
+# export GOPATH="$HOME/go"                # go libs
 export PATH="$HOME/go/bin:$PATH"          # go binaries
 # export GO111MODULE=on
 
@@ -165,7 +165,7 @@ source <(kubectl completion zsh)
 #
 # Sensu CLI
 
-export PATH=/Users/jamesdphillips/go/src/github.com/sensu/sensu-go/bin:$PATH
+# export PATH=/Users/jamesdphillips/go/src/github.com/sensu/sensu-go/bin:$PATH
 source <(sensuctl completion zsh)
 
 # added by travis gem
@@ -191,3 +191,8 @@ export PATH="$PATH:./node_modules/.bin"
 # Z
 
 . `brew --prefix`/etc/profile.d/z.sh
+
+#
+# Sensu Dev
+
+export SENSU_INTERNAL_ENVIRONMENT=dev
